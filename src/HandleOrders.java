@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HandleOrders {
@@ -11,8 +12,20 @@ public class HandleOrders {
     private double totalOrderPrice = 0.0;
     private int numberOfPizzasOrdered = 0;
     StringBuilder pizzaOrderSummary = new StringBuilder();
+    ArrayList<CustomPizza> customPizzas = new ArrayList<>();
+    CustomPizza customPizza = new CustomPizza();
 
     Scanner input = new Scanner(System.in);
+
+    public void addCustomPizza(String toppings, double price){
+        customPizza.setToppings(toppings);
+        customPizza.setPrice(price);
+        customPizzas.add(customPizza);
+    }
+
+    public void removeCustomPizza(int index){
+        customPizzas.remove(index);
+    }
 
     public void takeOrder(){
         String orderAnother = "Y";
@@ -77,6 +90,7 @@ public class HandleOrders {
                         break;
                 }
             } else if (choice == 6){
+               
                 double customPizzaPrice = 0;
                 
                 System.out.println("For your custom pizza, here are the toppings:");
